@@ -2,6 +2,7 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import helpers.CreateRandomData;
 
 public class LoginPage extends BasePage{
 
@@ -18,7 +19,9 @@ public class LoginPage extends BasePage{
     }
 
     public void fillCreateAccountEmail(){
-        createAccountMail.fill("testEndava@test.com");
+        String randomEmail = new CreateRandomData().createRandomEmail();
+        System.out.println(randomEmail);
+        createAccountMail.fill(randomEmail);
     }
 
     public void clickOnCreateAccountButton(){
