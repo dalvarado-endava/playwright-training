@@ -1,4 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Sep 07 11:29:04 COT 2022","Wed Sep 07 11:29:28 COT 2022","23674","firefox","","","","","Successful user registration",""
-"passed","Wed Sep 07 11:29:04 COT 2022","Wed Sep 07 11:29:25 COT 2022","20709","webkit","","","","","Successful user registration",""
-"passed","Wed Sep 07 11:29:04 COT 2022","Wed Sep 07 11:29:22 COT 2022","17754","chromium","","","","","Successful user registration",""
+"passed","Wed Sep 07 16:18:09 COT 2022","Wed Sep 07 16:18:38 COT 2022","29530","firefox","","Registration and Login tests","","","Successful user registration",""
+"passed","Wed Sep 07 16:18:09 COT 2022","Wed Sep 07 16:18:35 COT 2022","26340","webkit","","Registration and Login tests","","","Successful user registration",""
+"passed","Wed Sep 07 16:18:09 COT 2022","Wed Sep 07 16:18:31 COT 2022","22262","chromium","","Registration and Login tests","","","Successful user registration",""
