@@ -29,10 +29,9 @@ public class InitialSetup {
         loginPage = new LoginPage(page);
     }
 
-    @AfterMethod
+    @AfterMethod(enabled = false)
     public void close(){
         browser.close();
-        playwright.close();
     }
 
 }
