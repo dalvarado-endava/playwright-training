@@ -21,12 +21,20 @@ test.describe('Registration and Login tests', () => {
     test('Successful user registration', async ({ page }) => {
         await homepage.gotoPage();
         await homepage.clickSignInButton();
-        await authenticationPage.typeEmail();
+        await authenticationPage.typeRandomEmail();
         await authenticationPage.clickCreateAnAccountButton();
         await accountCreationPage.fillRequiredInputs();
         await accountCreationPage.clickRegisterButton();
         await myAccountPage.validateMyAccountTitle();
         await myAccountPage.validateUserName(accountCreationPage);
+    });
+
+    test('Unsuccessful user registration', async ( {page} ) => {
+        await homepage.gotoPage();
+        await homepage.clickSignInButton();
+        await authenticationPage.typeRegisteredEmail();
+        await authenticationPage.clickCreateAnAccountButton();
+        await authenticationPage.validateRegisteredEmailError();
     });
 
 });
