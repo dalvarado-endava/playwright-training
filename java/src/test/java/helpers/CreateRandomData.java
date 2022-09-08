@@ -30,7 +30,7 @@ public class CreateRandomData {
     }
 
     public String createRandomZipcode(){
-        return faker.address().zipCode().toString();
+        return faker.number().digits(5).toString();
     }
 
     public String createRandomPhoneNumber(){
