@@ -6,7 +6,6 @@ import pages.components.MenuComponent;
 
 public class HomePage extends BasePage {
     private Locator secondAnnounce;
-
     private Locator bestSellerButton;
     private Locator firstBestSellerOnList;
 

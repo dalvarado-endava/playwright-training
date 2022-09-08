@@ -5,6 +5,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.testng.annotations.*;
+import pages.CreateAnAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -14,6 +15,7 @@ public class InitialSetup {
     protected Browser browser;
     protected HomePage homePage;
     protected LoginPage loginPage;
+    protected CreateAnAccountPage createAnAccountPage;
 
 
     @BeforeMethod
@@ -27,11 +29,13 @@ public class InitialSetup {
         page.navigate("http://automationpractice.com/index.php");
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
+        createAnAccountPage = new CreateAnAccountPage(page);
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod
     public void close(){
         browser.close();
+        playwright.close();
     }
 
 }

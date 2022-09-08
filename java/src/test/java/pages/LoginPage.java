@@ -1,13 +1,16 @@
 package pages;
 
+import com.github.javafaker.Faker;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+
 import helpers.CreateRandomData;
 
 public class LoginPage extends BasePage{
 
     private Locator createAccountMail;
     private Locator createAccountButton;
+
     public LoginPage(Page page) {
         super(page);
         createAccountMail = page.locator("#email_create");
@@ -19,9 +22,8 @@ public class LoginPage extends BasePage{
     }
 
     public void fillCreateAccountEmail(){
-        String randomEmail = new CreateRandomData().createRandomEmail();
-        System.out.println(randomEmail);
-        createAccountMail.fill(randomEmail);
+        String email = new CreateRandomData().createRandomEmail();
+        createAccountMail.fill(email);
     }
 
     public void clickOnCreateAccountButton(){
