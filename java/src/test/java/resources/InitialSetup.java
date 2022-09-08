@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 import pages.CreateAnAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyAccountPage;
 
 public class InitialSetup {
     protected Playwright playwright;
@@ -16,6 +17,7 @@ public class InitialSetup {
     protected HomePage homePage;
     protected LoginPage loginPage;
     protected CreateAnAccountPage createAnAccountPage;
+    protected MyAccountPage myAccountPage;
 
 
     @BeforeMethod
@@ -30,6 +32,7 @@ public class InitialSetup {
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
         createAnAccountPage = new CreateAnAccountPage(page);
+        myAccountPage = new MyAccountPage(page);
     }
 
     @AfterMethod
