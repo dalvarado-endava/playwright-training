@@ -9,7 +9,9 @@ import pages.components.MenuComponent;
 
 public class CreateAnAccountPage extends BasePage{
     private Locator firstName;
+    private Locator customerFirstName;
     private Locator lastName;
+    private Locator customerLastName;
     private Locator email;
     private Locator password;
     private Locator address;
@@ -27,14 +29,16 @@ public class CreateAnAccountPage extends BasePage{
     public CreateAnAccountPage (Page page){
         super(page);
         menuComponent = new MenuComponent(page);
-        firstName = page.locator("#customer_firstname");
-        lastName = page.locator("#customer_lastname");
+        customerFirstName = page.locator("#customer_firstname");
+        firstName = page.locator("#firstname");
+        customerLastName = page.locator("#customer_lastname");
+        lastName = page.locator("#lastname");
         email = page.locator("#email");
         password = page.locator("#passwd");
         address = page.locator("#address1");
         city = page.locator("#city");
         stateDropDownMenu = page.locator("#id_state");
-        state = page.locator("#");
+        state = page.locator("#id_state.form-control.1");
         zip = page.locator("#postcode");
         mobilePhone = page.locator("#phone_mobile");
         registerButton = page.locator("#submitAccount");
@@ -43,6 +47,7 @@ public class CreateAnAccountPage extends BasePage{
     public void fillFirstName(){
         log.info("Filling the first name");
         String randomFirstName = new CreateRandomData().createRandomFirstName();
+        customerFirstName.fill(randomFirstName);
         firstName.fill(randomFirstName);
         log.info("The first name was filled with: {}", randomFirstName);
     }
@@ -50,6 +55,7 @@ public class CreateAnAccountPage extends BasePage{
     public void fillLastName(){
         log.info("Filling the last name");
         String randomLastName = new CreateRandomData().createRandomLastName();
+        customerLastName.fill(randomLastName);
         lastName.fill(randomLastName);
         log.info("The last name was filled with: {}", randomLastName);
     }
@@ -85,7 +91,8 @@ public class CreateAnAccountPage extends BasePage{
     public void selectState(){
         log.info("Selecting state");
         stateDropDownMenu.click();
-        state.click();
+        log.info("PASO PASO PASO PASO");
+        stateDropDownMenu.selectOption("1");
         log.info("The state was selected");
     }
 
@@ -106,5 +113,9 @@ public class CreateAnAccountPage extends BasePage{
     public void clickInRegisterButton(){
         registerButton.click();
         log.info("clicking register button");
+    }
+
+    public Locator getCustomerFirstName() {
+        return customerFirstName;
     }
 }
