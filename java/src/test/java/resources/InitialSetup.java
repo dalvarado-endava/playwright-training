@@ -5,10 +5,8 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.testng.annotations.*;
-import pages.CreateAnAccountPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.MyAccountPage;
+import pages.*;
+import pages.components.AddPopup;
 
 public class InitialSetup {
     protected Playwright playwright;
@@ -18,7 +16,19 @@ public class InitialSetup {
     protected LoginPage loginPage;
     protected CreateAnAccountPage createAnAccountPage;
     protected MyAccountPage myAccountPage;
+    protected ItemPage itemPage;
+    protected AddPopup addPopup;
 
+    protected Submit submit;
+
+    protected String userEmail;
+
+    protected String userPassword;
+
+    protected Address address;
+
+    protected Shipping shipping;
+    protected Payment payment;
 
     @BeforeMethod
     public void openBrowser() {
@@ -28,11 +38,19 @@ public class InitialSetup {
         lp.setHeadless(false);
         browser = playwright.chromium().launch(lp);
         page = browser.newPage();
-        page.navigate("http://automationpractice.com/index.php");
+        page.navigate("https://automationpractice.com/index.php?");
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
         createAnAccountPage = new CreateAnAccountPage(page);
         myAccountPage = new MyAccountPage(page);
+        itemPage = new ItemPage(page);
+        addPopup = new AddPopup(page);
+        submit = new Submit(page);
+        userEmail = System.getenv("userEmail");
+        userPassword = System.getenv("userPassword");
+        address = new Address(page);
+        shipping = new Shipping(page);
+        payment = new Payment(page);
     }
 
     @AfterMethod
