@@ -40,4 +40,8 @@ public class CreateRandomData {
     public String createRandomNickName(){
         return faker.name().username().toString();
     }
+
+    public int createRandomNumber(int maxNumber){
+        return faker.number().numberBetween(1, maxNumber);
+    }
 }

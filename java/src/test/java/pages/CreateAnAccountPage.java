@@ -118,4 +118,40 @@ public class CreateAnAccountPage extends BasePage{
     public Locator getCustomerFirstName() {
         return customerFirstName;
     }
+
+    public Locator getLastName() {
+        return lastName;
+    }
+
+    public Locator getEmail() {
+        return email;
+    }
+
+    public Locator getPassword() {
+        return password;
+    }
+
+    public Locator getAddress() {
+        return address;
+    }
+
+    public Locator getCity() {
+        return city;
+    }
+
+    public Locator getStateDropDownMenu() {
+        return stateDropDownMenu;
+    }
+
+    public Locator getZip() {
+        return zip;
+    }
+
+    public Locator getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public Locator getRegisterButton() {
+        return registerButton;
+    }
 }
