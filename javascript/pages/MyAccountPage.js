@@ -16,9 +16,12 @@ exports.MyAccountPage = class MyAccountPage {
     await expect(this.myAccountH1).toHaveText('My account');
   }
 
-  async validateUserName(accountCreationPage) {
-    await expect(this.userButton).toBeVisible();
+  async validateRandomUserName(accountCreationPage) {
     await expect(this.userButton).toContainText(accountCreationPage.firstName + " " + accountCreationPage.lastName);
+  }
+
+  async validateUsername(){
+    await expect(this.userButton).toContainText(process.env.FIRSTNAME + " " + process.env.LASTNAME);
   }
 
 }

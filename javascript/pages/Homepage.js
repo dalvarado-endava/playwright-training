@@ -16,7 +16,6 @@ exports.Homepage = class Homepage {
   }
 
   async clickSignInButton() {
-    await expect(this.signInButton).toBeVisible();
     await this.signInButton.click();
   }
 

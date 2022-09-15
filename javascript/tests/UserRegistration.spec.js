@@ -26,15 +26,24 @@ test.describe('Registration and Login tests', () => {
         await accountCreationPage.fillRequiredInputs();
         await accountCreationPage.clickRegisterButton();
         await myAccountPage.validateMyAccountTitle();
-        await myAccountPage.validateUserName(accountCreationPage);
+        await myAccountPage.validateRandomUserName(accountCreationPage);
     });
 
-    test('Unsuccessful user registration', async ( {page} ) => {
+    test('Unsuccessful user registration', async ({ page }) => {
         await homepage.gotoPage();
         await homepage.clickSignInButton();
         await authenticationPage.typeRegisteredEmail();
         await authenticationPage.clickCreateAnAccountButton();
         await authenticationPage.validateRegisteredEmailError();
+    });
+
+    test('Successful login', async ({ page }) => {
+        await homepage.gotoPage();
+        await homepage.clickSignInButton();
+        await authenticationPage.typeLoginEmail();
+        await authenticationPage.typeLoginPassword();
+        await authenticationPage.clickSignInButton();
+        await myAccountPage.validateUsername();
     });
 
 });
