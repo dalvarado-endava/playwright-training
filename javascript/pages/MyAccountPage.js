@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const data = require('../data/data.json');
 
 exports.MyAccountPage = class MyAccountPage {
 
@@ -17,7 +18,7 @@ exports.MyAccountPage = class MyAccountPage {
   }
 
   async validateRandomUserName(accountCreationPage) {
-    await expect(this.userButton).toContainText(accountCreationPage.firstName + " " + accountCreationPage.lastName);
+    await expect(this.userButton).toContainText(data.user.firstname + " " + data.user.lastname);
   }
 
   async validateUsername(){

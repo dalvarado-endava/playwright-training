@@ -1,0 +1,17 @@
+{
+  "user": {
+    "firstname": "Diego",
+    "lastname": "Vargas",
+    "address": "Fake Street",
+    "city": "Fake City",
+    "postcode": "00000",
+    "phone": "1234567890"
+  },
+  "errors": {
+    "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. "
+  },
+  "titles": {
+    "loginpage": "Login - My Store",
+    "homepage": "My Store"
+  }
+}

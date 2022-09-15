@@ -1,5 +1,6 @@
 const { expect } = require('@playwright/test');
 const { dotenv } = require('dotenv').config();
+const data = require('../data/data.json');
 
 
 exports.AuthenticationPage = class AuthenticationPage {
@@ -10,7 +11,6 @@ exports.AuthenticationPage = class AuthenticationPage {
     constructor(page) {
         this.page = page;
         this.randomEmail = 'fakeMail' + Math.floor(Math.random() * 9999999) + '@mail.com';
-        this.registeredEmailErrorMessage = 'An account using this email address has already been registered. Please enter a valid password or request a new one. ';
         this.registeredEmailErrorAlert = page.locator('#create_account_error');
         this.createEmailInput = page.locator('#email_create');
         this.loginEmailInput = page.locator('#email');
@@ -44,7 +44,7 @@ exports.AuthenticationPage = class AuthenticationPage {
     }
 
     async validateRegisteredEmailError() {
-        await expect(this.registeredEmailErrorAlert).toContainText(this.registeredEmailErrorMessage);
+        await expect(this.registeredEmailErrorAlert).toContainText(data.errors.registerEmailErrorMessage);
     }
 
 }
