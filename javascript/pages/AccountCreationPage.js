@@ -1,5 +1,6 @@
 const { expect } = require('@playwright/test');
 const data = require('../data/data.json');
+const randomize = require('../helpers/randomize');
 
 exports.AccountCreationPage = class AccountCreationPage {
 
@@ -31,7 +32,7 @@ exports.AccountCreationPage = class AccountCreationPage {
     await this.lastNameInput.fill(data.user.lastname);
     await this.addressInput.fill(data.user.address);
     await this.cityInput.fill(data.user.city);
-    await this.stateDropdown.selectOption({value: '8'});
+    await this.stateDropdown.selectOption(randomize.state());
     await this.postCodeInput.fill(data.user.postcode);
     await this.mobilePhoneInput.fill(data.user.phone);
   }

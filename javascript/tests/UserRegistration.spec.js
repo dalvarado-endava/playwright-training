@@ -20,7 +20,7 @@ test.describe('Registration and Login tests', () => {
         await homepage.clickSignInButton();
     });
 
-    test('Successful user registration', async ({ page }) => {
+    test.only('Successful user registration', async ({ page }) => {
         await authenticationPage.typeRandomEmail();
         await authenticationPage.clickCreateAnAccountButton();
         await accountCreationPage.fillRequiredInputs();
