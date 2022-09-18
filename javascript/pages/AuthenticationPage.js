@@ -1,8 +1,4 @@
 const { expect } = require('@playwright/test');
-const { dotenv } = require('dotenv').config();
-const data = require('../data/data.json');
-const randomize = require('../helpers/randomize');
-
 
 exports.AuthenticationPage = class AuthenticationPage {
 
@@ -19,20 +15,16 @@ exports.AuthenticationPage = class AuthenticationPage {
         this.signInButton = page.locator('#SubmitLogin');
     }
 
-    async typeRandomEmail() {
-        await this.createEmailInput.fill(randomize.email());
+    async fillEmail(email) {
+        await this.createEmailInput.fill(email);
     }
 
-    async typeRegisteredEmail(){
-        await this.createEmailInput.fill(process.env.EMAIL);
+    async typeLoginEmail(email){
+        await this.loginEmailInput.fill(email);
     }
 
-    async typeLoginEmail(){
-        await this.loginEmailInput.fill(process.env.EMAIL);
-    }
-
-    async typeLoginPassword(){
-        await this.loginPasswordInput.fill(process.env.PASSWORD);
+    async typeLoginPassword(password){
+        await this.loginPasswordInput.fill(password);
     }
 
     async clickCreateAnAccountButton() {
@@ -43,8 +35,8 @@ exports.AuthenticationPage = class AuthenticationPage {
         await this.signInButton.click();
     }
 
-    async validateRegisteredEmailError() {
-        await expect(this.registeredEmailErrorAlert).toContainText(data.errors.registerEmailErrorMessage);
+    async validateRegisteredEmailError(message) {
+        await expect(this.registeredEmailErrorAlert).toContainText(message);
     }
 
 }

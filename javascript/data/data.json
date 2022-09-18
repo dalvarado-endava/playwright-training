@@ -5,13 +5,29 @@
     "address": "Fake Street",
     "city": "Fake City",
     "postcode": "00000",
-    "phone": "1234567890"
+    "mobilephone": "1234567890"
   },
   "errors": {
-    "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. "
+    "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. ",
+    "noSearchResultsFound": "No results were found for your search"
   },
   "titles": {
+    "homepage": "My Store",
     "loginpage": "Login - My Store",
-    "homepage": "My Store"
+    "myaccountpage": "My account - My Store"
+  },
+  "texts": {
+    "myaccountpageH1": "My account",
+    "resultsFound": " results have been found."
+  },
+  "searches": {
+    "yellowdress": {
+      "keywords": "Yellow dress",
+      "results": "3"
+    },
+    "labordress": {
+      "keywords": "Labor dress",
+      "results": "0"
+    }
   }
 }

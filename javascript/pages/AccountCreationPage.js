@@ -1,6 +1,4 @@
 const { expect } = require('@playwright/test');
-const data = require('../data/data.json');
-const randomize = require('../helpers/randomize');
 
 exports.AccountCreationPage = class AccountCreationPage {
 
@@ -22,19 +20,48 @@ exports.AccountCreationPage = class AccountCreationPage {
     this.registerButton = this.page.locator('#submitAccount');
   }
 
-  async fillRequiredInputs() {
+  async validatePageTitle(title) {
+    await expect(this.page).toHaveTitle(title);
+  }
 
-    await expect(this.page).toHaveTitle('Login - My Store');  
-    await this.customerFirstNameInput.fill(data.user.firstname);
-    await this.customerLastNameInput.fill(data.user.lastname);
-    await this.passwordInput.fill(process.env.PASSWORD);
-    await this.firstNameInput.fill(data.user.firstname);
-    await this.lastNameInput.fill(data.user.lastname);
-    await this.addressInput.fill(data.user.address);
-    await this.cityInput.fill(data.user.city);
-    await this.stateDropdown.selectOption(randomize.state());
-    await this.postCodeInput.fill(data.user.postcode);
-    await this.mobilePhoneInput.fill(data.user.phone);
+  async fillCustomerFirstName(firstname) {
+    await this.customerFirstNameInput.fill(firstname);
+  }
+
+  async fillCustomerLastName(lastname) {
+    await this.customerLastNameInput.fill(lastname);
+  }
+
+  async fillPassword(password) {
+    await this.passwordInput.fill(password);
+  }
+
+  async fillFirstName(firstname) {
+    await this.firstNameInput.fill(firstname);
+  }
+
+  async fillLastName(lastname) {
+    await this.lastNameInput.fill(lastname);
+  }
+
+  async fillAddress(address) {
+    await this.addressInput.fill(address);
+  }
+
+  async fillCity(city) {
+    await this.cityInput.fill(city);
+  }
+
+  async fillState(state) {
+    await this.stateDropdown.selectOption(state);
+  }
+
+  async fillPostCode(postcode) {
+    await this.postCodeInput.fill(postcode);
+  }
+
+  async fillMobilePhone(phone) {
+    await this.mobilePhoneInput.fill(phone);
   }
 
   async clickRegisterButton() {
