@@ -14,11 +14,16 @@
   "titles": {
     "homepage": "My Store",
     "loginpage": "Login - My Store",
-    "myaccountpage": "My account - My Store"
+    "myaccountpage": "My account - My Store",
+    "womenpage": "Women - My Store",
+    "orderPage": "Order - My Store"
   },
   "texts": {
     "myaccountpageH1": "My account",
-    "resultsFound": " results have been found."
+    "resultsFound": " results have been found.",
+    "productAdded": "Product successfully added to your shopping cart ",
+    "bankwirePayment": "Bank-wire payment.",
+    "orderConfirmation": "Order confirmation"
   },
   "searches": {
     "yellowdress": {
@@ -28,6 +33,16 @@
     "labordress": {
       "keywords": "Labor dress",
       "results": "0"
+    }
+  },
+  "products": {
+    "women": {
+      "blouse": {
+        "name": "Blouse",
+        "index": "1",
+        "quantity": "2",
+        "total": "$56.00"
+      }
     }
   }
 }

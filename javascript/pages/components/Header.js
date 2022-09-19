@@ -7,7 +7,7 @@ exports.Header = class Header {
      */
     constructor(page) {
         this.page = page;
-        this.signInButton = page.locator('.login', { hasText: 'Sign in' });
+        this.signInButton = this.page.locator('.login', { hasText: 'Sign in' });
         this.userButton = this.page.locator('.header_user_info span');
         this.searchInput = this.page.locator('#search_query_top');
         this.searchButton = this.page.locator('//button[@name="submit_search"]');
