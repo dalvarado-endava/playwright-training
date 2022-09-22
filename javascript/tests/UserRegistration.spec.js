@@ -77,6 +77,13 @@ test.describe('Registration and Login', () => {
         await header.validateUsername(process.env.FIRSTNAME, process.env.LASTNAME);
     });
 
+    test('Unsuccessful login', async ({ page }) => {
+        await authenticationPage.typeLoginEmail(process.env.EMAIL);
+        await authenticationPage.typeLoginPassword(randomize.password());
+        await authenticationPage.clickSignInButton();
+        await authenticationPage.validateAuthFailedError(data.errors.authFailedErrorMessage);
+    });
+
 });
 
 
@@ -144,3 +151,5 @@ test.describe('Purchase while not logged in', () => {
         await paymentPage.validateOrderConfirmation(data.texts.orderConfirmation);
     });
 });
+
+

@@ -13,6 +13,7 @@ exports.AuthenticationPage = class AuthenticationPage {
         this.loginPasswordInput = page.locator('#passwd');
         this.createAnAccountButton = page.locator('#SubmitCreate', { hasText: 'Create an account' });
         this.signInButton = page.locator('#SubmitLogin');
+        this.authFailedErrorAlert = page.locator('.alert.alert-danger > ol > li');
     }
 
     async fillEmail(email) {
@@ -37,6 +38,10 @@ exports.AuthenticationPage = class AuthenticationPage {
 
     async validateRegisteredEmailError(message) {
         await expect(this.registeredEmailErrorAlert).toContainText(message);
+    }
+
+    async validateAuthFailedError(message) {
+        await expect(this.authFailedErrorAlert).toContainText(message);
     }
 
 }
