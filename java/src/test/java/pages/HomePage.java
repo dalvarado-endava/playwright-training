@@ -13,6 +13,8 @@ public class HomePage extends BasePage {
 
     public Locator blockPopularSellers;
     public Locator randomPopularItem;
+    public Locator searchBar;
+    public Locator searchButton;
 
     public MenuComponent menuComponent;
 
@@ -22,6 +24,8 @@ public class HomePage extends BasePage {
         super(page);
         menuComponent = new MenuComponent(page);
         blockPopularSellers = page.locator("#homefeatured");
+        searchBar = page.locator("#search_query_top");
+        searchButton = page.locator("button.button-search");
     }
 
     public void selectRandomPopularItem() {
@@ -35,6 +39,16 @@ public class HomePage extends BasePage {
     public void clickOnRandomPopularItem() {
         randomPopularItem.locator(".product-container").click();
         log.info("Click on the " + randomPopularItem + " element");
+    }
+
+    public void fillTheSearchBar(){
+        log.info("Filling the Search bar");
+        searchBar.fill("Blouse");
+    }
+
+    public void clickTheSearchButton(){
+        log.info("Clicking the Search button");
+        searchButton.click();
     }
 
 }
