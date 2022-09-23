@@ -2,10 +2,11 @@ package pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import io.qameta.allure.Step;
 import pages.components.MenuComponent;
 
-public class MyAccountPage extends BasePage{
-    private Locator myPersonalInformationButton;
+public class MyAccountPage extends BasePage {
+    private final Locator myPersonalInformationButton;
 
     public MenuComponent menuComponent;
 
@@ -15,7 +16,8 @@ public class MyAccountPage extends BasePage{
         myPersonalInformationButton = page.locator(".icon-user");
     }
 
-    public Locator getMyPersonalInformationButton(){
+    @Step("Get information button location")
+    public Locator getMyPersonalInformationButton() {
         return myPersonalInformationButton;
     }
 }
