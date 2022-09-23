@@ -3,20 +3,21 @@ package pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import helpers.CreateRandomData;
+import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.components.MenuComponent;
 
 public class HomePage extends BasePage {
-
-    private CreateRandomData createRandomData = new CreateRandomData();
-
     public Locator blockPopularSellers;
     public Locator randomPopularItem;
     public Locator searchBar;
     public Locator searchButton;
 
+    private int randomNumberElement;
     public MenuComponent menuComponent;
+
+    private Locator addButton;
 
     private final Logger log = LoggerFactory.getLogger(HomePage.class);
 
@@ -28,26 +29,48 @@ public class HomePage extends BasePage {
         searchButton = page.locator("button.button-search");
     }
 
+    @Step("The random element was selected")
     public void selectRandomPopularItem() {
         int numberOfPopularElements = blockPopularSellers.locator(">li").count();
         log.info(numberOfPopularElements + " elements were found in popular section");
-        int selectRandomElement = createRandomData.createRandomNumber(numberOfPopularElements);
-        this.randomPopularItem = blockPopularSellers.locator(">:nth-child(" + selectRandomElement + ")");
-        log.info("The element " + selectRandomElement + " was selected");
+        randomNumberElement = new CreateRandomData().createRandomNumber(numberOfPopularElements);
+        randomPopularItem = blockPopularSellers.locator(">:nth-child(" + randomNumberElement + ")");
+        log.info("The element " + randomNumberElement + " was selected");
     }
 
+    @Step("Click on random element")
     public void clickOnRandomPopularItem() {
         randomPopularItem.locator(".product-container").click();
-        log.info("Click on the " + randomPopularItem + " element");
+        log.info("Click on the " + randomNumberElement + " element");
     }
 
-    public void fillTheSearchBar(){
+    @Step("Pass mouse over random element")
+    public void passMouseOverRandomItem() {
+        randomPopularItem.locator(".product-container").hover();
+        log.info("Pass mouse over the element " + randomNumberElement);
+    }
+    @Step("Get add button location")
+    public Locator getAddButton() {
+        addButton = randomPopularItem.locator(".button-container>> text=Add to cart");
+        return addButton;
+    }
+
+    @Step("Click on Add button")
+    public void clickOnAddButton() {
+        addButton.click();
+        log.info("Click on Add button");
+    }
+
+    @Step("Filling the Search bar")
+    public void fillTheSearchBar() {
         log.info("Filling the Search bar");
         searchBar.fill("Blouse");
     }
 
-    public void clickTheSearchButton(){
+    @Step("Clicking the Search button")
+    public void clickTheSearchButton() {
         log.info("Clicking the Search button");
+        searchButton.hover();
         searchButton.click();
     }
 

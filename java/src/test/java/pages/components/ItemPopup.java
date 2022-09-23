@@ -12,12 +12,16 @@ public class ItemPopup extends BasePage {
 
     private final Logger log = LoggerFactory.getLogger(ItemPopup.class);
 
+    public Locator productPopup;
+
     public ItemPopup (Page page){
         super(page);
         addToCartButton = page.locator("#add_to_cart");
+        productPopup = page.locator("#product");
     }
 
     public void clickAddToCart(){
+        addToCartButton.hover();
         addToCartButton.click();
         log.info("CLick on add to card button");
     }
