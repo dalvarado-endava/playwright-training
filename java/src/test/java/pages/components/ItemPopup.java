@@ -18,6 +18,7 @@ public class ItemPopup extends BasePage {
     }
 
     public void clickAddToCart(){
+        addToCartButton.hover();
         addToCartButton.click();
         log.info("CLick on add to card button");
     }

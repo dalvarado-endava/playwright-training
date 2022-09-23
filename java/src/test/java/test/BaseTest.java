@@ -1,18 +1,29 @@
-package resources;
+package test;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import helpers.BrowserProvider;
+import io.qameta.allure.Allure;
+import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.*;
 import pages.components.AddPopup;
 import pages.components.ItemPopup;
 
-public class InitialSetup {
-    protected Playwright playwright;
-    protected Page page;
-    protected Browser browser;
+
+import java.io.ByteArrayInputStream;
+import java.nio.file.Paths;
+import java.util.UUID;
+
+public class BaseTest {
+
+    public Playwright playwright;
+    public Browser browser;
+
+    public Page page;
     protected HomePage homePage;
     protected LoginPage loginPage;
     protected CreateAnAccountPage createAnAccountPage;
@@ -33,15 +44,16 @@ public class InitialSetup {
     protected Shipping shipping;
     protected Payment payment;
 
+    private BrowserProvider browserProvider = new BrowserProvider();
+
     @BeforeMethod
-    public void openBrowser() {
+    @Parameters({"browserName"})
+    public void set(String browserName){
         playwright = Playwright.create();
-        BrowserType.LaunchOptions lp = new BrowserType.LaunchOptions();
-        lp.setChannel("chrome");
-        lp.setHeadless(false);
-        browser = playwright.chromium().launch(lp);
+        browser = browserProvider.getBrowser(playwright,browserName)
+                .launch(new BrowserType.LaunchOptions().setHeadless(false));
         page = browser.newPage();
-        page.navigate("https://automationpractice.com/index.php?");
+        page.navigate("http://automationpractice.com/");
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
         createAnAccountPage = new CreateAnAccountPage(page);
@@ -57,9 +69,15 @@ public class InitialSetup {
         searchPage = new SearchPage(page);
         itemPopup = new ItemPopup(page);
     }
-
     @AfterMethod
-    public void close(){
+    public void close(ITestResult result){
+        if (!result.isSuccess()){
+            String uuid = UUID.randomUUID().toString();
+            byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()
+                    .setPath(Paths.get("allure-results/screenshot"+uuid+"screenshot.png"))
+                    .setFullPage(true));
+            Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(screenshot));
+        }
         browser.close();
         playwright.close();
     }
