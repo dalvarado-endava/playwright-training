@@ -7,6 +7,7 @@ import com.microsoft.playwright.Playwright;
 import org.testng.annotations.*;
 import pages.*;
 import pages.components.AddPopup;
+import pages.components.ItemPopup;
 
 public class InitialSetup {
     protected Playwright playwright;
@@ -18,6 +19,8 @@ public class InitialSetup {
     protected MyAccountPage myAccountPage;
     protected ItemPage itemPage;
     protected AddPopup addPopup;
+    protected SearchPage searchPage;
+    protected ItemPopup itemPopup;
 
     protected Submit submit;
 
@@ -51,6 +54,8 @@ public class InitialSetup {
         address = new Address(page);
         shipping = new Shipping(page);
         payment = new Payment(page);
+        searchPage = new SearchPage(page);
+        itemPopup = new ItemPopup(page);
     }
 
     @AfterMethod
