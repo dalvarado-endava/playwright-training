@@ -7,14 +7,9 @@ exports.ProductPage = class ProductPage {
      */
     constructor(page) {
         this.page = page;
-        //this.productName = this.page.locator('h1');
-        this.productName = this.page.locator('//div[@itemtype="http://schema.org/Product"]//h1[@itemprop="name"]');
+        this.productName = this.page.locator('//h1[@itemprop="name"]');
         this.wantedQuantityInput = this.page.locator('#quantity_wanted');
         this.addToCartButton = this.page.locator('#add_to_cart');
-    }
-
-    async validateProductName(productName){
-        await expect(this.productName).toHaveText(productName);
     }
 
     async fillWantedQuantity(quantity){

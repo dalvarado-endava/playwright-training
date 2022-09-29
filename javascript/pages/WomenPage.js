@@ -33,6 +33,5 @@ exports.WomenPage = class WomenPage {
     // pending to use
     async clickAddToCartButton() {
         await this.addToCartButton.nth(1).click();
-        await this.page.screenshot({ path: 'screenshot.png', fullPage: true });
     }
 }

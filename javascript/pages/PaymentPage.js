@@ -16,7 +16,6 @@ exports.PaymentPage = class PaymentPage {
 
     async validateTotal(totalPrice){
         await expect(this.totalPriceField).toContainText(totalPrice);
-        await this.page.screenshot({ path: 'page.png', fullPage: true });
     }
 
     async clickBankwireButton(){

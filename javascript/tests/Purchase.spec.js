@@ -37,7 +37,6 @@ test.describe('Purchase while not logged in', () => {
         await womenPage.validateTitle(data.titles.womenpage);
         await womenPage.hoverProduct(data.products.women.blouse.index);
         await womenPage.clickMoreButton(data.products.women.blouse.index);
-        await productPage.validateProductName(data.products.women.blouse.name);
         await productPage.fillWantedQuantity(data.products.women.blouse.quantity);
         await productPage.clickAddToCartButton();
         await productModal.validateProductAddedMessage(data.texts.productAdded);
