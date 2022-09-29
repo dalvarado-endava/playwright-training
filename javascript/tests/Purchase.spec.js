@@ -9,6 +9,7 @@ const { ShippingPage } = require('../pages/ShippingPage.js');
 const { PaymentPage } = require('../pages/PaymentPage.js');
 const { dotenv } = require('dotenv').config();
 const data = require('../data/data.json');
+const calculate = require('../helpers/calculate.js');
 
 let authenticationPage;
 let womenPage;
@@ -19,7 +20,7 @@ let addressPage;
 let shippingPage;
 let paymentPage;
 
-test.describe('Purchase while not logged in', () => {
+test.describe('Purchase while logged in', () => {
 
     test.beforeEach(async ({ page }) => {
         womenPage = new WomenPage(page);
@@ -30,31 +31,35 @@ test.describe('Purchase while not logged in', () => {
         addressPage = new AddressPage(page);
         shippingPage = new ShippingPage(page);
         paymentPage = new PaymentPage(page);
-        await womenPage.goToPage();
-    });
-
-    test('Purchase women clothes', async ({ page }) => {
-        await womenPage.validateTitle(data.titles.womenpage);
-        await womenPage.hoverProduct(data.products.women.blouse.index);
-        await womenPage.clickMoreButton(data.products.women.blouse.index);
-        await productPage.fillWantedQuantity(data.products.women.blouse.quantity);
-        await productPage.clickAddToCartButton();
-        await productModal.validateProductAddedMessage(data.texts.productAdded);
-        await productModal.validateProductName(data.products.women.blouse.name);
-        await productModal.validateProductQuantity(data.products.women.blouse.quantity);
-        await productModal.clickCheckoutButton();
-        await orderPage.validateTitle(data.titles.orderPage);
-        await orderPage.clickCheckoutButton();
+        await authenticationPage.goToPage();
         await authenticationPage.typeLoginEmail(process.env.EMAIL);
         await authenticationPage.typeLoginPassword(process.env.PASSWORD);
         await authenticationPage.clickSignInButton();
-        await addressPage.clickCheckoutButton();
-        await shippingPage.checkTermsOfService();
-        await shippingPage.clickCheckoutButton();
-        await paymentPage.validateTotal(data.products.women.blouse.total);
-        await paymentPage.clickBankwireButton();
-        await paymentPage.validateBankwireHeading(data.texts.bankwirePayment);
-        await paymentPage.clickConfirmOrderButton();
-        await paymentPage.validateOrderConfirmation(data.texts.orderConfirmation);
     });
+    
+    data.products.women.forEach((product,index) => {
+        test(`Purchase women clothes: ${product.name} (${product.price})`, async ({ page }) => {
+            await womenPage.goToPage();
+            await womenPage.validateTitle(data.titles.womenpage);
+            await womenPage.hoverProduct(index);
+            await womenPage.clickMoreButton(index);
+            await productPage.fillWantedQuantity(product.quantity);
+            await productPage.clickAddToCartButton();
+            await productModal.validateProductAddedMessage(data.texts.productAdded);
+            await productModal.validateProductName(product.name);
+            await productModal.validateProductQuantity(product.quantity);
+            await productModal.clickCheckoutButton();
+            await orderPage.validateTitle(data.titles.orderPage);
+            await orderPage.clickCheckoutButton();
+            await addressPage.clickCheckoutButton();
+            await shippingPage.checkTermsOfService();
+            await shippingPage.clickCheckoutButton();
+            await paymentPage.validateTotal( calculate.totalPrice(product.price, product.quantity) );
+            await paymentPage.clickBankwireButton();
+            await paymentPage.validateBankwireHeading(data.texts.bankwirePayment);
+            await paymentPage.clickConfirmOrderButton();
+            await paymentPage.validateOrderConfirmation(data.texts.orderConfirmation);
+        });
+
+    })
 });

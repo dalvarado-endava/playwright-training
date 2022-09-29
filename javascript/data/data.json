@@ -37,13 +37,42 @@
     }
   },
   "products": {
-    "women": {
-      "blouse": {
+    "women": [
+      {
+        "name": "Faded Short Sleeve T-shirts",
+        "price": "$16.51",
+        "quantity": "1"
+      },
+      {
         "name": "Blouse",
-        "index": "1",
-        "quantity": "2",
-        "total": "$56.00"
+        "price": "$27.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$26.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$50.99",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$28.98",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$30.50",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Chiffon Dress",
+        "price": "$16.40",
+        "quantity": "1"
       }
-    }
+    ]
   }
 }

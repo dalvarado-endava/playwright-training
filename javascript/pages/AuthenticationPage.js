@@ -7,6 +7,7 @@ exports.AuthenticationPage = class AuthenticationPage {
      */
     constructor(page) {
         this.page = page;
+        this.url = 'http://automationpractice.com/index.php?controller=authentication&back=my-account';
         this.registeredEmailErrorAlert = page.locator('#create_account_error');
         this.createEmailInput = page.locator('#email_create');
         this.loginEmailInput = page.locator('#email');
@@ -14,6 +15,10 @@ exports.AuthenticationPage = class AuthenticationPage {
         this.createAnAccountButton = page.locator('#SubmitCreate', { hasText: 'Create an account' });
         this.signInButton = page.locator('#SubmitLogin');
         this.authFailedErrorAlert = page.locator('.alert.alert-danger > ol > li');
+    }
+
+    async goToPage(){
+        await this.page.goto(this.url);
     }
 
     async fillEmail(email) {
