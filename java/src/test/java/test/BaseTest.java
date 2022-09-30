@@ -64,10 +64,10 @@ public class BaseTest {
         userEmail = System.getenv("userEmail");
         userPassword = System.getenv("userPassword");
         address = new Address(page);
-        shipping = new Shipping(page);
         payment = new Payment(page);
         searchPage = new SearchPage(page);
         itemPopup = new ItemPopup(page);
+        Assert.assertNotNull(page);
     }
 
     @AfterMethod
@@ -80,6 +80,7 @@ public class BaseTest {
             Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(screenshot));
         }
         browser.close();
+        Assert.assertTrue(result.isSuccess());
     }
 
 }
