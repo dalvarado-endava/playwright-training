@@ -19,6 +19,9 @@
     "womenpage": "Women - My Store",
     "orderPage": "Order - My Store"
   },
+  "urls": {
+    "womenpage": "http://automationpractice.com/index.php?id_category=3&controller=category"
+  },
   "texts": {
     "myaccountpageH1": "My account",
     "resultsFound": " results have been found.",
