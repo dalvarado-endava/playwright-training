@@ -8,8 +8,9 @@ import org.slf4j.LoggerFactory;
 
 public class SearchPage extends BasePage {
 
-    private Locator nameSearch;
-    private Locator pictureOfTheFirstItem;
+    private final Locator nameSearch;
+    private final Locator pictureOfTheFirstItem;
+    private final Locator addToCartButton;
 
     private final Logger log = LoggerFactory.getLogger(LoginPage.class);
 
@@ -17,18 +18,29 @@ public class SearchPage extends BasePage {
         super(page);
         nameSearch = page.locator(".lighter");
         pictureOfTheFirstItem = page.locator(".left-block > .product-image-container");
+        addToCartButton = page.locator("text=Add to cart");
     }
 
-    @Step("Getting the search")
-    public Locator getSearch() {
-        log.info("Getting the search");
-        return nameSearch;
-    }
 
     @Step("Clicking on the first item")
-    public void clickOnTheFirstItem() {
+    public void passMouseOverTheFirstItem() {
         log.info("Clicking on the first item");
         pictureOfTheFirstItem.hover();
-        pictureOfTheFirstItem.click();
     }
+
+    @Step("Click on add button")
+    public void clickOnAddButton() {
+        addToCartButton.click();
+    }
+
+    @Step("assert that add button is visible")
+    public void assertThatAddButtonIsVisible() {
+        assertIfLocatorIsVisible(addToCartButton);
+    }
+
+    @Step("assert that Search bar is visible")
+    public void assertSearchResultsAreVisible() {
+        assertIfLocatorIsVisible(nameSearch);
+    }
+
 }

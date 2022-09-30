@@ -1,14 +1,13 @@
 package helpers;
 
-import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Playwright;
 
 public class BrowserProvider {
 
-    public BrowserType getBrowser(Playwright playwright, String browserName){
+    public BrowserType getBrowser(Playwright playwright, String browserName) {
         BrowserType browserType;
-        switch (browserName){
+        switch (browserName) {
             case "Chrome":
                 browserType = playwright.chromium();
                 break;

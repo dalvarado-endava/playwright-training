@@ -9,11 +9,11 @@ import pages.BasePage;
 
 public class AddPopup extends BasePage {
 
-    public Locator proceedCheckoutButton;
+    private final Locator proceedCheckoutButton;
 
-    public Locator cart;
+    private final Locator cart;
 
-    public Locator continueShopping;
+    private final Locator continueShopping;
     private final Logger log = LoggerFactory.getLogger(AddPopup.class);
 
     public AddPopup(Page page) {
@@ -34,5 +34,15 @@ public class AddPopup extends BasePage {
     public void clickOnContinueShoppingButton() {
         continueShopping.click();
         log.info("Click on continue Shopping button");
+    }
+
+    @Step("Assert that Cart is visible")
+    public void assertThatCartIsVisible() {
+        assertIfLocatorIsVisible(cart);
+    }
+
+    @Step("Assert that proceed checkout button is visible")
+    public void assertThatProceedCheckoutButtonIsVisible() {
+        assertIfLocatorIsVisible(proceedCheckoutButton);
     }
 }

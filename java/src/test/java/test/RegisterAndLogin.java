@@ -1,38 +1,39 @@
 package test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class RegisterAndLogin extends BaseTest {
     @Test
-    public void LogIn(){
-        assertThat(homePage.menuComponent.getSingButton()).isVisible();
+    @Feature("Login and register")
+    @Description("As user I want to click on sing button and create a new user in the platform")
+    public void LogIn() {
         homePage.menuComponent.clickOnSingInButton();
-        assertThat(loginPage.getCreateAccountMail()).isEditable();
+        loginPage.assertThatCreateAccountMailIsEditable();
         loginPage.fillCreateAccountEmail();
-        assertThat(loginPage.getCreateAccountButton()).isVisible();
+        loginPage.assertThatCreateAccountButtonIsVisible();
         loginPage.clickOnCreateAccountButton();
-        assertThat(createAnAccountPage.getCustomerFirstName()).isVisible();
+        createAnAccountPage.assertThatFirstNameIsEditable();
         createAnAccountPage.fillFirstName();
-        assertThat(createAnAccountPage.getLastName()).isEditable();
+        createAnAccountPage.assertThatLastNameIsEditable();
         createAnAccountPage.fillLastName();
-        assertThat(createAnAccountPage.getEmail()).isEditable();
+        createAnAccountPage.assertThatEmailIsEditable();
         createAnAccountPage.fillEmail();
-        assertThat(createAnAccountPage.getPassword()).isEditable();
+        createAnAccountPage.assertThatPasswordIsEditable();
         createAnAccountPage.fillPassword();
-        assertThat(createAnAccountPage.getAddress()).isEditable();
+        createAnAccountPage.assertThatAddressIsEditable();
         createAnAccountPage.fillAddress();
-        assertThat(createAnAccountPage.getCity()).isEditable();
+        createAnAccountPage.assertThatCityIsEditable();
         createAnAccountPage.fillCity();
-        assertThat(createAnAccountPage.getStateDropDownMenu()).isVisible();
+        createAnAccountPage.assertThatStateDropDownIsVisible();
         createAnAccountPage.selectState();
-        assertThat(createAnAccountPage.getZip()).isEditable();
+        createAnAccountPage.assertThatZipCodeIsEditable();
         createAnAccountPage.fillZip();
-        assertThat(createAnAccountPage.getMobilePhone()).isEditable();
+        createAnAccountPage.assertThatMobilePhoneIsEditable();
         createAnAccountPage.fillMobilePhone();
         createAnAccountPage.clickInRegisterButton();
-        assertThat(myAccountPage.getMyPersonalInformationButton()).isVisible();
+        myAccountPage.assertThatMyPersonalInformationButtonIsVisible();
     }
 
 }

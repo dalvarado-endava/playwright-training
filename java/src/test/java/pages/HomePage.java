@@ -9,10 +9,8 @@ import org.slf4j.LoggerFactory;
 import pages.components.MenuComponent;
 
 public class HomePage extends BasePage {
-    public Locator blockPopularSellers;
-    public Locator randomPopularItem;
-    public Locator searchBar;
-    public Locator searchButton;
+    private final Locator blockPopularSellers;
+    private Locator randomPopularItem;
 
     private int randomNumberElement;
     public MenuComponent menuComponent;
@@ -25,8 +23,6 @@ public class HomePage extends BasePage {
         super(page);
         menuComponent = new MenuComponent(page);
         blockPopularSellers = page.locator("#homefeatured");
-        searchBar = page.locator("#search_query_top");
-        searchButton = page.locator("button.button-search");
     }
 
     @Step("The random element was selected")
@@ -49,6 +45,7 @@ public class HomePage extends BasePage {
         randomPopularItem.locator(".product-container").hover();
         log.info("Pass mouse over the element " + randomNumberElement);
     }
+
     @Step("Get add button location")
     public Locator getAddButton() {
         addButton = randomPopularItem.locator(".button-container>> text=Add to cart");
@@ -61,17 +58,19 @@ public class HomePage extends BasePage {
         log.info("Click on Add button");
     }
 
-    @Step("Filling the Search bar")
-    public void fillTheSearchBar() {
-        log.info("Filling the Search bar");
-        searchBar.fill("Blouse");
+    @Step("Assert that Block Popular Sellers is visible")
+    public void assertThatBlockPopularSellersIsVisible() {
+        assertIfLocatorIsVisible(blockPopularSellers);
     }
 
-    @Step("Clicking the Search button")
-    public void clickTheSearchButton() {
-        log.info("Clicking the Search button");
-        searchButton.hover();
-        searchButton.click();
+    @Step("Assert that random popular item is visible")
+    public void assertThatRandomPopularItemIsVisible() {
+        assertIfLocatorIsVisible(randomPopularItem);
+    }
+
+    @Step("Assert that add button is visible")
+    public void assertThatAddButtonIsVisible() {
+        assertIfLocatorIsVisible(getAddButton());
     }
 
 }

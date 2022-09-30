@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import pages.components.CartNavigation;
 
 public class Shipping extends BasePage {
-    public Locator checker;
+    private final Locator checker;
     public CartNavigation cartNavigation;
     private final Logger log = LoggerFactory.getLogger(Shipping.class);
 
@@ -22,5 +22,10 @@ public class Shipping extends BasePage {
     public void checkAgreedTerms() {
         checker.check();
         log.info("Check agreement terms");
+    }
+
+    @Step("Assert that proceed checker agreed terms is visible")
+    public void assertThatCheckerAgreedTermsIsVisible(){
+        assertIfLocatorIsVisible(checker);
     }
 }

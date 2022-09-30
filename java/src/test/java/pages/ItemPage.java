@@ -8,9 +8,8 @@ import org.slf4j.LoggerFactory;
 
 public class ItemPage extends BasePage {
 
-    public Locator addButton;
-
-    public Locator buyBlock;
+    private final Locator addButton;
+    private final Locator buyBlock;
     private final Logger log = LoggerFactory.getLogger(ItemPage.class);
 
     public ItemPage(Page page) {
@@ -24,5 +23,15 @@ public class ItemPage extends BasePage {
         addButton.hover();
         addButton.click();
         log.info("Click on add button");
+    }
+
+    @Step("Assert that buy block is visible")
+    public void assertThatBuyBlockIsVisible() {
+        assertIfLocatorIsVisible(buyBlock);
+    }
+
+    @Step("Assert that add button is visible")
+    public void assertThatAddButtonIsVisible() {
+        assertIfLocatorIsVisible(addButton);
     }
 }

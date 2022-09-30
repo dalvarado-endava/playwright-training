@@ -45,14 +45,15 @@ public class BaseTest {
     protected Payment payment;
 
     private BrowserProvider browserProvider = new BrowserProvider();
+
     @BeforeMethod
     @Parameters({"browserName"})
-    public void set(@Optional("Chrome") String browserName){
+    public void set(@Optional("Firefox") String browserName) {
         playwright = Playwright.create();
-        browser = browserProvider.getBrowser(playwright,browserName)
+        browser = browserProvider.getBrowser(playwright, browserName)
                 .launch(new BrowserType.LaunchOptions().setHeadless(false));
         page = browser.newPage();
-        page.navigate("http://automationpractice.com/");
+        page.navigate("http://automationpractice.com/index.php?");
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
         createAnAccountPage = new CreateAnAccountPage(page);
@@ -68,12 +69,13 @@ public class BaseTest {
         searchPage = new SearchPage(page);
         itemPopup = new ItemPopup(page);
     }
+
     @AfterMethod
-    public void close(ITestResult result){
-        if (!result.isSuccess()){
+    public void close(ITestResult result) {
+        if (!result.isSuccess()) {
             String uuid = UUID.randomUUID().toString();
             byte[] screenshot = page.screenshot(new Page.ScreenshotOptions()
-                    .setPath(Paths.get("allure-results/screenshot"+uuid+"screenshot.png"))
+                    .setPath(Paths.get("allure-results/screenshot" + uuid + "screenshot.png"))
                     .setFullPage(true));
             Allure.addAttachment(UUID.randomUUID().toString(), new ByteArrayInputStream(screenshot));
         }

@@ -10,11 +10,10 @@ import pages.components.CartSummary;
 
 public class Payment extends BasePage {
 
-    public Locator payByBank;
-    public CartNavigation cartNavigation;
-    public Locator confirmMyOrderButton;
-
-    public Locator successMessage;
+    private final Locator payByBank;
+    private final CartNavigation cartNavigation;
+    private final Locator confirmMyOrderButton;
+    private final Locator successMessage;
     private final Logger log = LoggerFactory.getLogger(Payment.class);
 
     public CartSummary cartSummary;
@@ -40,5 +39,20 @@ public class Payment extends BasePage {
         confirmMyOrderButton.hover();
         confirmMyOrderButton.click();
         log.info("Click on confirm my order button");
+    }
+
+    @Step("Assert that pay bank is visible")
+    public void assertThatPayBankIsVisible() {
+        assertIfLocatorIsVisible(payByBank);
+    }
+
+    @Step("Assert that confirm my order button is visible")
+    public void assertThatConfirmMyOrderButtonIsVisible() {
+        assertIfLocatorIsVisible(confirmMyOrderButton);
+    }
+
+    @Step("Assert that success message contains text {0}")
+    public void assertThatSuccessMessageContainsText(String text) {
+        assertThatElementContainsText(successMessage, text);
     }
 }

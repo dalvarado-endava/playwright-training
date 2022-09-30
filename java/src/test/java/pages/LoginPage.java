@@ -57,6 +57,7 @@ public class LoginPage extends BasePage {
         singInPassword.fill(password);
         log.info("Fill the password");
     }
+
     @Step("Get create account button")
     public Locator getCreateAccountButton() {
         return createAccountButton;
@@ -67,5 +68,15 @@ public class LoginPage extends BasePage {
         singInButton.hover();
         singInButton.click();
         log.info("Click on Sing In button");
+    }
+
+    @Step("Assert that create account mail field is editable")
+    public void assertThatCreateAccountMailIsEditable() {
+        assertIfLocatorIsEditable(createAccountMail);
+    }
+
+    @Step("Assert that create account button is visible")
+    public void assertThatCreateAccountButtonIsVisible() {
+        assertIfLocatorIsVisible(createAccountButton);
     }
 }

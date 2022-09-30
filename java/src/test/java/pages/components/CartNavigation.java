@@ -9,10 +9,9 @@ import pages.BasePage;
 
 public class CartNavigation extends BasePage {
 
-    public Locator summary;
-
+    private final Locator summary;
     public Locator proceedCheckoutButton;
-    public Locator proceedCheckoutButton2;
+    private final Locator proceedCheckoutButton2;
     private final Logger log = LoggerFactory.getLogger(CartNavigation.class);
 
     public CartNavigation(Page page) {
@@ -34,5 +33,20 @@ public class CartNavigation extends BasePage {
         proceedCheckoutButton2.hover();
         proceedCheckoutButton2.click();
         log.info("Click on proceed checkout button");
+    }
+
+    @Step("Assert that Summary is visible")
+    public void assertThatSummaryIsVisible() {
+        assertIfLocatorIsVisible(summary);
+    }
+
+    @Step("Assert that proceed checkout button is visible")
+    public void assertThatProceedCheckoutButtonIsVisible() {
+        assertIfLocatorIsVisible(proceedCheckoutButton);
+    }
+
+    @Step("Assert that proceed checkout button is visible")
+    public void assertThatProceedCheckoutButton2IsVisible() {
+        assertIfLocatorIsVisible(proceedCheckoutButton2);
     }
 }

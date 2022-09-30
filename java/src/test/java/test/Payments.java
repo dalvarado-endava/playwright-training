@@ -1,110 +1,117 @@
 package test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class Payments extends BaseTest {
 
     @Test
-    public void checkoutTest(){
-        assertThat(homePage.blockPopularSellers).isVisible();
+    @Feature("Payments")
+    @Description("As user I want to select and item from the popular block and follow the complete flow for payments")
+    public void purchaseOnePopularElement() {
+        homePage.assertThatBlockPopularSellersIsVisible();
         homePage.selectRandomPopularItem();
-        assertThat(homePage.randomPopularItem).isVisible();
+        homePage.assertThatRandomPopularItemIsVisible();
         homePage.clickOnRandomPopularItem();
-        assertThat(itemPage.addButton).isVisible();
-        assertThat(itemPage.buyBlock).isVisible();
+        itemPage.assertThatAddButtonIsVisible();
+        itemPage.assertThatBuyBlockIsVisible();
         itemPage.clickAddButton();
-        assertThat(addPopup.cart).isVisible();
-        assertThat(addPopup.proceedCheckoutButton).isVisible();
+        addPopup.assertThatCartIsVisible();
+        addPopup.assertThatProceedCheckoutButtonIsVisible();
         addPopup.clickOnProceedCheckoutButton();
-        assertThat(submit.cartNavigation.summary).isVisible();
-        assertThat(submit.cartNavigation.proceedCheckoutButton).isVisible();
+        submit.cartNavigation.assertThatSummaryIsVisible();
+        submit.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
         submit.cartNavigation.clickOnProceedCheckoutButton();
         loginPage.fillSingInMail(userEmail);
         loginPage.fillSingInPassword(userPassword);
         loginPage.clickOnSingInButton();
-        assertThat(address.cartNavigation.proceedCheckoutButton2).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButton2IsVisible();
         address.cartNavigation.clickOnProceedCheckoutButton2();
-        assertThat(shipping.checker).isVisible();
+        shipping.assertThatCheckerAgreedTermsIsVisible();
         shipping.checkAgreedTerms();
-        assertThat(address.cartNavigation.proceedCheckoutButton).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
         address.cartNavigation.clickOnProceedCheckoutButton();
-        assertThat(payment.payByBank).isVisible();
+        payment.assertThatPayBankIsVisible();
         payment.clickOnPayByBank();
-        assertThat(payment.confirmMyOrderButton).isVisible();
+        payment.assertThatConfirmMyOrderButtonIsVisible();
         payment.clickOnConfirmMyOrderButton();
-        assertThat(payment.successMessage).containsText("Your order on My Store is complete");
+        payment.assertThatSuccessMessageContainsText("Your order on My Store is complete");
     }
 
     @Test
+    @Feature("Payments")
+    @Description("As user I want to select two elements from the popular block and then in the summary I wan to to delete one and follow the complete flow for payments")
     public void addItemsToCartAndDeleteIt() {
-        assertThat(homePage.blockPopularSellers).isVisible();
+        homePage.assertThatBlockPopularSellersIsVisible();
         homePage.selectRandomPopularItem();
-        assertThat(homePage.randomPopularItem).isVisible();
+        homePage.assertThatRandomPopularItemIsVisible();
         homePage.passMouseOverRandomItem();
-        assertThat(homePage.getAddButton()).isVisible();
+        homePage.assertThatAddButtonIsVisible();
         homePage.clickOnAddButton();
-        assertThat(addPopup.continueShopping).isVisible();
+        addPopup.assertThatProceedCheckoutButtonIsVisible();
         addPopup.clickOnContinueShoppingButton();
         homePage.selectRandomPopularItem();
-        assertThat(homePage.randomPopularItem).isVisible();
+        homePage.assertThatRandomPopularItemIsVisible();
         homePage.passMouseOverRandomItem();
-        assertThat(homePage.getAddButton()).isVisible();
+        homePage.assertThatAddButtonIsVisible();
         homePage.clickOnAddButton();
         addPopup.clickOnProceedCheckoutButton();
-        assertThat(submit.cartNavigation.summary).isVisible();
-        assertThat(submit.cartSummary.productTable).hasCount(2);
+        submit.cartNavigation.assertThatSummaryIsVisible();
+        submit.cartSummary.assertThatProductTableContainsNumberOfProducts(2);
         submit.cartSummary.clickOnFirstTrashIcon();
-        assertThat(submit.cartNavigation.proceedCheckoutButton).isVisible();
-        assertThat(submit.cartSummary.productTable).hasCount(1);
+        submit.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
+        submit.cartSummary.assertThatProductTableContainsNumberOfProducts(1);
         submit.cartNavigation.clickOnProceedCheckoutButton();
         loginPage.fillSingInMail(userEmail);
         loginPage.fillSingInPassword(userPassword);
         loginPage.clickOnSingInButton();
-        assertThat(address.cartNavigation.proceedCheckoutButton2).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButton2IsVisible();
         address.cartNavigation.clickOnProceedCheckoutButton2();
-        assertThat(shipping.checker).isVisible();
+        shipping.assertThatCheckerAgreedTermsIsVisible();
         shipping.checkAgreedTerms();
-        assertThat(address.cartNavigation.proceedCheckoutButton).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
         address.cartNavigation.clickOnProceedCheckoutButton();
-        assertThat(payment.cartSummary.productTable).hasCount(1);
-        assertThat(payment.payByBank).isVisible();
+        payment.cartSummary.assertThatProductTableContainsNumberOfProducts(1);
+        payment.assertThatPayBankIsVisible();
         payment.clickOnPayByBank();
-        assertThat(payment.confirmMyOrderButton).isVisible();
+        payment.assertThatConfirmMyOrderButtonIsVisible();
         payment.clickOnConfirmMyOrderButton();
-        assertThat(payment.successMessage).containsText("Your order on My Store is complete");
+        payment.assertThatSuccessMessageContainsText("Your order on My Store is complete");
     }
 
     @Test
-    public void cartTest(){
-        assertThat(homePage.searchBar).isVisible();
-        homePage.fillTheSearchBar();
-        homePage.clickTheSearchButton();
-        assertThat(searchPage.getSearch()).isVisible();
-        searchPage.clickOnTheFirstItem();
-        assertThat(itemPopup.productPopup).isVisible();
-        assertThat(itemPopup.getAddToCartButton()).isVisible();
+    @Feature("Payments")
+    @Description("As user I want to search for an item in the search bar, and the I want to select the first and follow the complete flow for payments")
+    public void cartTest() {
+        homePage.menuComponent.assertSearchBarIsVisible();
+        homePage.menuComponent.fillTheSearchBar("Blouse");
+        homePage.menuComponent.clickTheSearchButton();
+        searchPage.assertSearchResultsAreVisible();
+        searchPage.passMouseOverTheFirstItem();
+        searchPage.assertThatAddButtonIsVisible();
+        searchPage.clickOnAddButton();
         itemPopup.clickAddToCart();
-        assertThat(addPopup.cart).isVisible();
-        assertThat(addPopup.proceedCheckoutButton).isVisible();
+        addPopup.assertThatCartIsVisible();
+        addPopup.assertThatProceedCheckoutButtonIsVisible();
         addPopup.clickOnProceedCheckoutButton();
-        assertThat(submit.cartNavigation.summary).isVisible();
-        assertThat(submit.cartNavigation.proceedCheckoutButton).isVisible();
+        submit.cartNavigation.assertThatSummaryIsVisible();
+        submit.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
         submit.cartNavigation.clickOnProceedCheckoutButton();
         loginPage.fillSingInMail(userEmail);
         loginPage.fillSingInPassword(userPassword);
         loginPage.clickOnSingInButton();
-        assertThat(address.cartNavigation.proceedCheckoutButton2).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButton2IsVisible();
         address.cartNavigation.clickOnProceedCheckoutButton2();
-        assertThat(shipping.checker).isVisible();
+        shipping.assertThatCheckerAgreedTermsIsVisible();
         shipping.checkAgreedTerms();
-        assertThat(address.cartNavigation.proceedCheckoutButton).isVisible();
+        address.cartNavigation.assertThatProceedCheckoutButtonIsVisible();
         address.cartNavigation.proceedCheckoutButton.click();
-        assertThat(payment.payByBank).isVisible();
+        payment.assertThatPayBankIsVisible();
         payment.clickOnPayByBank();
-        assertThat(payment.confirmMyOrderButton).isVisible();
+        payment.assertThatConfirmMyOrderButtonIsVisible();
         payment.clickOnConfirmMyOrderButton();
-        assertThat(payment.successMessage).containsText("Your order on My Store is complete");
+        payment.assertThatSuccessMessageContainsText("Your order on My Store is complete");
     }
 }

@@ -16,8 +16,8 @@ public class MyAccountPage extends BasePage {
         myPersonalInformationButton = page.locator(".icon-user");
     }
 
-    @Step("Get information button location")
-    public Locator getMyPersonalInformationButton() {
-        return myPersonalInformationButton;
+    @Step("Assert that my personal information button is visible")
+    public void assertThatMyPersonalInformationButtonIsVisible() {
+        assertIfLocatorIsVisible(myPersonalInformationButton);
     }
 }

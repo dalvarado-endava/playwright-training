@@ -9,20 +9,18 @@ import helpers.CreateRandomData;
 import pages.components.MenuComponent;
 
 public class CreateAnAccountPage extends BasePage {
-    private Locator firstName;
-    private Locator customerFirstName;
-    private Locator lastName;
-    private Locator customerLastName;
-    private Locator email;
-    private Locator password;
-    private Locator address;
-    private Locator city;
-    private Locator stateDropDownMenu;
-    private Locator state;
-    private Locator zip;
-    private Locator mobilePhone;
-    private Locator registerButton;
-
+    private final Locator firstName;
+    private final Locator customerFirstName;
+    private final Locator lastName;
+    private final Locator customerLastName;
+    private final Locator email;
+    private final Locator password;
+    private final Locator address;
+    private final Locator city;
+    private final Locator stateDropDownMenu;
+    private final Locator zip;
+    private final Locator mobilePhone;
+    private final Locator registerButton;
     private final Logger log = LoggerFactory.getLogger(CreateAnAccountPage.class);
 
     public MenuComponent menuComponent;
@@ -39,7 +37,6 @@ public class CreateAnAccountPage extends BasePage {
         address = page.locator("#address1");
         city = page.locator("#city");
         stateDropDownMenu = page.locator("#id_state");
-        state = page.locator("#id_state.form-control.1");
         zip = page.locator("#postcode");
         mobilePhone = page.locator("#phone_mobile");
         registerButton = page.locator("#submitAccount");
@@ -127,51 +124,48 @@ public class CreateAnAccountPage extends BasePage {
         log.info("clicking register button");
     }
 
-    @Step("Get first name field location")
-    public Locator getCustomerFirstName() {
-        return customerFirstName;
+    @Step("Assert that first name is editable")
+    public void assertThatFirstNameIsEditable() {
+        assertIfLocatorIsEditable(firstName);
     }
 
-    @Step("Get Last name field location")
-    public Locator getLastName() {
-        return lastName;
+    @Step("Assert that last name is editable")
+    public void assertThatLastNameIsEditable() {
+        assertIfLocatorIsEditable(lastName);
     }
 
-    @Step("Get email field location")
-    public Locator getEmail() {
-        return email;
+    @Step("Assert that email is editable")
+    public void assertThatEmailIsEditable() {
+        assertIfLocatorIsEditable(email);
     }
 
-    @Step("Get password field location")
-    public Locator getPassword() {
-        return password;
+    @Step("Assert that password is editable")
+    public void assertThatPasswordIsEditable() {
+        assertIfLocatorIsEditable(password);
     }
 
-    @Step("Get address field location")
-    public Locator getAddress() {
-        return address;
+    @Step("Assert that address is editable")
+    public void assertThatAddressIsEditable() {
+        assertIfLocatorIsEditable(address);
     }
 
-    @Step("Get city field location")
-    public Locator getCity() {
-        return city;
+    @Step("Assert that city is editable")
+    public void assertThatCityIsEditable() {
+        assertIfLocatorIsEditable(city);
     }
 
-    @Step("Get state drop down menu location")
-    public Locator getStateDropDownMenu() {
-        return stateDropDownMenu;
+    @Step("Assert that state drop down is visible")
+    public void assertThatStateDropDownIsVisible() {
+        assertIfLocatorIsEditable(stateDropDownMenu);
     }
 
-    @Step("Get Zip code field location")
-    public Locator getZip() {
-        return zip;
+    @Step("Assert that zip code is editable")
+    public void assertThatZipCodeIsEditable() {
+        assertIfLocatorIsEditable(zip);
     }
-    @Step("Get mobile phone field location")
-    public Locator getMobilePhone() {
-        return mobilePhone;
-    }
-    @Step("Get register button location")
-    public Locator getRegisterButton() {
-        return registerButton;
+
+    @Step("Assert that mobile phone is editable")
+    public void assertThatMobilePhoneIsEditable() {
+        assertIfLocatorIsEditable(mobilePhone);
     }
 }
