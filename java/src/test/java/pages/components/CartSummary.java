@@ -22,4 +22,10 @@ public class CartSummary extends BasePage {
         productTable.locator("td").nth(6).click();
         log.info("Click on trash icon");
     }
+
+    @Step("Assert that proceed checkout button is visible")
+    public void assertThatProductTableContainsNumberOfProducts(int numberOfProducts) {
+        assertThatLocatorContainsCertainNumberOfElements(productTable, numberOfProducts);
+    }
+
 }

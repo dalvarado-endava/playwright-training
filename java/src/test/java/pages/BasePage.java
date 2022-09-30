@@ -1,11 +1,14 @@
 package pages;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 
 public class BasePage {
-    protected Page page;
+    private Page page;
 
     public BasePage(Page page) {
         this.page = page;
@@ -14,5 +17,19 @@ public class BasePage {
         PlaywrightAssertions.setDefaultAssertionTimeout(30000);
     }
 
+    protected void assertIfLocatorIsVisible(Locator locator) {
+        assertThat(locator).isVisible();
+    }
 
+    protected void assertIfLocatorIsEditable(Locator locator) {
+        assertThat(locator).isEditable();
+    }
+
+    protected void assertThatElementContainsText(Locator locator, String text) {
+        assertThat(locator).containsText(text);
+    }
+
+    protected void assertThatLocatorContainsCertainNumberOfElements(Locator locator, int numberOfElements) {
+        assertThat(locator).hasCount(numberOfElements);
+    }
 }

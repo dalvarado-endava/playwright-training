@@ -5,7 +5,7 @@ import com.github.javafaker.Faker;
 import java.util.Locale;
 
 public class CreateRandomData {
-    private Faker faker = new Faker(new Locale("en"));
+    private final Faker faker = new Faker(new Locale("en"));
 
     public String createRandomEmail() {
         return faker.bothify("????##@gmail.com");
@@ -24,24 +24,24 @@ public class CreateRandomData {
     }
 
     public String createRandomAddress() {
-        return faker.address().streetName().toString() + " " +
-                faker.address().buildingNumber().toString() + " " +
+        return faker.address().streetName() + " " +
+                faker.address().buildingNumber() + " " +
                 faker.address().secondaryAddress();
     }
 
-    public String createRandomZipcode(){
-        return faker.number().digits(5).toString();
+    public String createRandomZipcode() {
+        return faker.number().digits(5);
     }
 
-    public String createRandomPhoneNumber(){
+    public String createRandomPhoneNumber() {
         return faker.phoneNumber().cellPhone();
     }
 
-    public String createRandomNickName(){
-        return faker.name().username().toString();
+    public String createRandomNickName() {
+        return faker.name().username();
     }
 
-    public int createRandomNumber(int maxNumber){
+    public int createRandomNumber(int maxNumber) {
         return faker.number().numberBetween(1, maxNumber);
     }
 }
