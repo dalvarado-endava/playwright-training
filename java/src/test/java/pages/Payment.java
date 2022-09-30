@@ -5,13 +5,11 @@ import com.microsoft.playwright.Page;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.components.CartNavigation;
 import pages.components.CartSummary;
 
 public class Payment extends BasePage {
 
     private final Locator payByBank;
-    private final CartNavigation cartNavigation;
     private final Locator confirmMyOrderButton;
     private final Locator successMessage;
     private final Logger log = LoggerFactory.getLogger(Payment.class);
@@ -20,7 +18,6 @@ public class Payment extends BasePage {
 
     public Payment(Page page) {
         super(page);
-        cartNavigation = new CartNavigation(page);
         payByBank = page.locator(".bankwire");
         confirmMyOrderButton = page.locator("//*[@id=\"cart_navigation\"]/button");
         successMessage = page.locator(".cheque-indent");
