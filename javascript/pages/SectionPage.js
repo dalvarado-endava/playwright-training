@@ -1,6 +1,6 @@
 const { BasePage } = require('./BasePage.js');
 
-exports.WomenPage = class WomenPage extends BasePage {
+exports.SectionPage = class SectionPage extends BasePage {
 
     /**
      * @param {import('@playwright/test').Page} page 

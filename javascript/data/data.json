@@ -16,11 +16,15 @@
     "homepage": "My Store",
     "loginpage": "Login - My Store",
     "myaccountpage": "My account - My Store",
-    "womenpage": "Women - My Store",
+    "women": "Women - My Store",
+    "dresses": "Dresses - My Store",
+    "tshirts": "T-shirts - My Store",
     "orderPage": "Order - My Store"
   },
   "urls": {
-    "womenpage": "http://automationpractice.com/index.php?id_category=3&controller=category"
+    "women": "http://automationpractice.com/index.php?id_category=3&controller=category",
+    "dresses": "http://automationpractice.com/index.php?id_category=8&controller=category",
+    "tshirts": "http://automationpractice.com/index.php?id_category=5&controller=category"
   },
   "texts": {
     "myaccountpageH1": "My account",
@@ -74,6 +78,40 @@
       {
         "name": "Printed Chiffon Dress",
         "price": "$16.40",
+        "quantity": "1"
+      }
+    ],
+    "dresses": [
+      {
+        "name": "Printed Dress",
+        "price": "$26.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$50.99",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$28.98",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$30.50",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Chiffon Dress",
+        "price": "$16.40",
+        "quantity": "1"
+      }
+    ],
+    "tshirts": [
+      {
+        "name": "Faded Short Sleeve T-shirts",
+        "price": "$16.51",
         "quantity": "1"
       }
     ]
