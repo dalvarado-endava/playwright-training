@@ -1,13 +1,13 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('../pages/BasePage.js');
 
-exports.AuthenticationPage = class AuthenticationPage {
+exports.AuthenticationPage = class AuthenticationPage extends BasePage{
 
     /**
      * @param {import('@playwright/test').Page} page
      */
     constructor(page) {
-        this.page = page;
-        this.url = 'http://automationpractice.com/index.php?controller=authentication&back=my-account';
+        super(page);
         this.registeredEmailErrorAlert = page.locator('#create_account_error');
         this.createEmailInput = page.locator('#email_create');
         this.loginEmailInput = page.locator('#email');
@@ -15,10 +15,6 @@ exports.AuthenticationPage = class AuthenticationPage {
         this.createAnAccountButton = page.locator('#SubmitCreate', { hasText: 'Create an account' });
         this.signInButton = page.locator('#SubmitLogin');
         this.authFailedErrorAlert = page.locator('.alert.alert-danger > ol > li');
-    }
-
-    async goToPage(){
-        await this.page.goto(this.url);
     }
 
     async fillEmail(email) {

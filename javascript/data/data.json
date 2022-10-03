@@ -22,6 +22,7 @@
   },
   "urls": {
     "home": "http://automationpractice.com/index.php",
+    "authentication": "http://automationpractice.com/index.php?controller=authentication&back=my-account",
     "women": "http://automationpractice.com/index.php?id_category=3&controller=category",
     "dresses": "http://automationpractice.com/index.php?id_category=8&controller=category",
     "tshirts": "http://automationpractice.com/index.php?id_category=5&controller=category"
