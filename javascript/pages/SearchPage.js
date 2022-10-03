@@ -1,12 +1,13 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('./BasePage');
 
-exports.SearchPage = class SearchPage {
+exports.SearchPage = class SearchPage extends BasePage {
 
     /**
      * @param {import('@playwright/test').Page} page 
      */
     constructor (page){
-        this.page = page;
+        super(page);
         this.searchResults = page.locator('.product_list.grid.row > li');
         this.noResultsFoundAlert = page.locator('.alert.alert-warning');
         this.headingCounterText = page.locator('.heading-counter');

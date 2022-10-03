@@ -8,8 +8,12 @@
     "test:headed": "npx playwright test --headed",
     "test:chromium": "npx playwright test --project=chromium",
     "test:chromium-headed": "npx playwright test --project=chromium --headed",
+    "test:purchase-c-h": "npx playwright test tests/Purchase.spec.js --project=chromium --headed",
+    "test:purchase-c": "npx playwright test tests/Purchase.spec.js --project=chromium",
+    "test:purchase-f-h": "npx playwright test tests/Purchase.spec.js --project=firefox --headed",
+    "test:purchase-w-h": "npx playwright test tests/Purchase.spec.js --project=webkit --headed",
     "test:report": "allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report",
-    "test:report-clean": "rm -r allure-results/ allure-report/ test-results/"
+    "test:report-clean": "rm -r allure-results/ allure-report/ test-results/ playwright-report/"
   },
   "keywords": [],
   "author": "",

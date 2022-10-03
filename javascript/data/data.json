@@ -9,8 +9,7 @@
   },
   "errors": {
     "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. ",
-    "noSearchResultsFound": "No results were found for your search",
-    "authFailedErrorMessage": "Authentication failed."
+    "authFailedErrorMessage": "Authentication failed. (delete this text in parenthesis)"
   },
   "titles": {
     "homepage": "My Store",
@@ -28,20 +27,44 @@
   },
   "texts": {
     "myaccountpageH1": "My account",
-    "resultsFound": " results have been found.",
+    "noSearchResultsFound": "No results were found for your search",
+    "oneResultFound": " result has been found.",
+    "manyResultsFound": " results have been found.",
     "productAdded": "Product successfully added to your shopping cart ",
     "bankwirePayment": "Bank-wire payment.",
     "orderConfirmation": "Order confirmation"
   },
   "searches": {
-    "yellowdress": {
-      "keywords": "Yellow dress",
-      "results": "3"
-    },
-    "labordress": {
-      "keywords": "Labor dress",
-      "results": "0"
-    }
+    "withNoResults": [
+      {
+        "keywords": "Macbook pro",
+        "results": "0"
+      },
+      {
+        "keywords": "Garden hose",
+        "results": "0"
+      }
+    ],
+    "withOneResult": [
+      {
+        "keywords": "Faded Short Sleeve T-shirts",
+        "results": "1"
+      },
+      {
+        "keywords": "Blouse",
+        "results": "1"
+      }
+    ],
+    "withManyResults": [
+      {
+        "keywords": "Yellow dress",
+        "results": "3"
+      },
+      {
+        "keywords": "Summer dress",
+        "results": "4"
+      }
+    ]    
   },
   "products": {
     "women": [
