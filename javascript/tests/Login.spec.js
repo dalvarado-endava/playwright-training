@@ -26,18 +26,38 @@ test.describe('Login', () => {
         await header.clickSignInButton();
     });
 
+
     test('Successful login', async ({ page }) => {
-        await authenticationPage.typeLoginEmail(process.env.EMAIL);
-        await authenticationPage.typeLoginPassword(process.env.PASSWORD);
-        await authenticationPage.clickSignInButton();
-        await header.validateUsername(process.env.FIRSTNAME, process.env.LASTNAME);
+
+        await test.step('Type login email', async () =>
+            await authenticationPage.typeLoginEmail(process.env.EMAIL))
+
+        await test.step('Type login password', async () =>
+            await authenticationPage.typeLoginPassword(process.env.PASSWORD))
+
+        await test.step('Click sign in button', async () =>
+            await authenticationPage.clickSignInButton())
+
+        await test.step('Validate username', async () =>
+            await header.validateUsername(process.env.FIRSTNAME, process.env.LASTNAME))
+
     });
 
+    
     test('Unsuccessful login', async ({ page }) => {
-        await authenticationPage.typeLoginEmail(process.env.EMAIL);
-        await authenticationPage.typeLoginPassword(randomize.password());
-        await authenticationPage.clickSignInButton();
-        await authenticationPage.validateAuthFailedError(data.errors.authFailedErrorMessage);
+
+        await test.step('Type login email', async () =>
+            await authenticationPage.typeLoginEmail(process.env.EMAIL))
+
+        await test.step('Type login password', async () =>
+            await authenticationPage.typeLoginPassword(randomize.password()))
+
+        await test.step('Click sign in button', async () =>
+            await authenticationPage.clickSignInButton())
+
+        await test.step('Validate authentication failed error', async () =>
+            await authenticationPage.validateAuthFailedError(data.errors.authFailedErrorMessage))
+
     });
 
 });

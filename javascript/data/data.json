@@ -9,7 +9,7 @@
   },
   "errors": {
     "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. ",
-    "authFailedErrorMessage": "Authentication failed. (delete this text in parenthesis)"
+    "authFailedErrorMessage": "Authentication failed."
   },
   "titles": {
     "homepage": "My Store",

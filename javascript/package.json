@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
     "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkitm",
     "test:chromium-headed": "npx playwright test --project=chromium --headed",
-    "test:purchase-c-h": "npx playwright test tests/Purchase.spec.js --project=chromium --headed",
-    "test:purchase-c": "npx playwright test tests/Purchase.spec.js --project=chromium",
-    "test:purchase-f-h": "npx playwright test tests/Purchase.spec.js --project=firefox --headed",
-    "test:purchase-w-h": "npx playwright test tests/Purchase.spec.js --project=webkit --headed",
+    "test:purchase": "npx playwright test tests/Purchase.spec.js --project=chromium --headed",
+    "test:login": "npx playwright test tests/Login.spec.js --project=chromium",
+    "test:registration": "npx playwright test tests/Registration.spec.js --project=firefox --headed",
+    "test:search": "npx playwright test tests/Search.spec.js --project=webkit --headed",
     "test:report": "allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report",
-    "test:report-clean": "rm -r allure-results/ allure-report/ test-results/ playwright-report/"
+    "test:report-clean": "rm -r allure-results/ allure-report/ test-results/ playwright-report/",
+    "test:jenkins": "java -jar jenkins.war --httpPort=8080"
   },
   "keywords": [],
   "author": "",
