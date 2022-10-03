@@ -18,7 +18,7 @@ let productModal;
 let orderPage;
 let addressPage;
 let shippingPage;
-let paymentPage;
+let paymentPage; 
 
 test.describe('Purchase while logged in', () => {
 
@@ -31,21 +31,21 @@ test.describe('Purchase while logged in', () => {
         addressPage = new AddressPage(page);
         shippingPage = new ShippingPage(page);
         paymentPage = new PaymentPage(page);
-        await authenticationPage.goToPage();
+        await authenticationPage.goToPage(data.urls.authentication);
         await authenticationPage.typeLoginEmail(process.env.EMAIL);
         await authenticationPage.typeLoginPassword(process.env.PASSWORD);
         await authenticationPage.clickSignInButton();
     });
 
 
-    Object.keys(data.urls).forEach(section => {
+    Object.keys(data.urls.sections).forEach(section => {
 
         data.products[section].forEach((product, index) => {
 
             test(`Purchase ${section} clothes: ${product.name} (${product.price})`, async ({ page }) => {
 
                 await test.step(`Go to ${section} page`, async () =>
-                    await sectionPage.goToPage(data.urls[section]))
+                    await sectionPage.goToPage(data.urls.sections[section]))
 
                 await test.step(`Validate ${section} section page title`, async () =>
                     await sectionPage.validateTitle(data.titles[section]))

@@ -1,17 +1,14 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('../pages/BasePage.js');
 
-exports.OrderPage = class OrderPage {
+exports.OrderPage = class OrderPage extends BasePage{
 
     /**
      * @param {import('@playwright/test').Page} page 
      */
     constructor(page){
-        this.page = page;
+        super(page);
         this.checkoutButton = this.page.locator('//p/*[@title="Proceed to checkout"]');
-    }
-
-    async validateTitle(title) {
-        await expect(this.page).toHaveTitle(title);
     }
 
     async clickCheckoutButton(){
