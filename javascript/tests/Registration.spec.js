@@ -22,7 +22,7 @@ test.describe('Registration', () => {
         authenticationPage = new AuthenticationPage(page);
         accountCreationPage = new AccountCreationPage(page);
         myAccountPage = new MyAccountPage(page);
-        await homepage.gotoPage();
+        await homepage.goToPage(data.urls.home);
         await header.clickSignInButton();
     });
 
@@ -36,7 +36,7 @@ test.describe('Registration', () => {
             await authenticationPage.clickCreateAnAccountButton())
 
         await test.step('Validate page title', async () =>
-            await accountCreationPage.validatePageTitle(data.titles.loginpage))
+            await accountCreationPage.validateTitle(data.titles.loginpage))
 
         await test.step('Fill customer firstname field', async () =>
             await accountCreationPage.fillCustomerFirstName(data.user.firstname))

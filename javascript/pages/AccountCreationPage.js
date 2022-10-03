@@ -1,12 +1,13 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('../pages/BasePage.js');
 
-exports.AccountCreationPage = class AccountCreationPage {
+exports.AccountCreationPage = class AccountCreationPage extends BasePage{
 
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
-    this.page = page;
+    super(page);
     this.customerFirstNameInput = this.page.locator('#customer_firstname');
     this.customerLastNameInput = this.page.locator('#customer_lastname');
     this.passwordInput = this.page.locator('#passwd');
@@ -18,10 +19,6 @@ exports.AccountCreationPage = class AccountCreationPage {
     this.postCodeInput = this.page.locator('#postcode');
     this.mobilePhoneInput = this.page.locator('#phone_mobile');
     this.registerButton = this.page.locator('#submitAccount');
-  }
-
-  async validatePageTitle(title) {
-    await expect(this.page).toHaveTitle(title);
   }
 
   async fillCustomerFirstName(firstname) {
