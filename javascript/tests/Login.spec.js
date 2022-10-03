@@ -22,7 +22,8 @@ test.describe('Login', () => {
         authenticationPage = new AuthenticationPage(page);
         accountCreationPage = new AccountCreationPage(page);
         myAccountPage = new MyAccountPage(page);
-        await homepage.gotoPage();
+        await homepage.goToPage(data.urls.home);
+        await homepage.validateTitle(data.titles.homepage)
         await header.clickSignInButton();
     });
 

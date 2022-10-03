@@ -1,17 +1,13 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('../pages/BasePage.js');
 
-exports.Homepage = class Homepage {
+exports.Homepage = class Homepage extends BasePage{
 
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
-    this.page = page;
-  }
-
-  async gotoPage() {
-    await this.page.goto('http://automationpractice.com/index.php');
-    await expect(this.page).toHaveTitle('My Store');
+    super(page);
   }
 
 }
