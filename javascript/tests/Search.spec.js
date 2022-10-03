@@ -15,7 +15,7 @@ test.describe('Search', () => {
         homepage = new Homepage(page);
         header = new Header(page);
         searchPage = new SearchPage(page);
-        await homepage.gotoPage();
+        await homepage.goToPage(data.urls.home);
     });
 
 
