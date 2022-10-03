@@ -72,7 +72,7 @@ test.describe('Registration', () => {
             await accountCreationPage.clickRegisterButton())
 
         await test.step('Validate "my account" title', async () =>
-            await myAccountPage.validateMyAccountTitle(data.titles.myaccountpage))
+            await myAccountPage.validateTitle(data.titles.myaccountpage))
 
         await test.step('Validate "my account" text', async () =>
             await myAccountPage.validateMyAccountText(data.texts.myaccountpageH1))

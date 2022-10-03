@@ -1,17 +1,14 @@
 const { expect } = require('@playwright/test');
+const { BasePage } = require('../pages/BasePage.js');
 
-exports.MyAccountPage = class MyAccountPage {
+exports.MyAccountPage = class MyAccountPage extends BasePage{
 
   /**
    * @param {import('@playwright/test').Page} page
    */
   constructor(page) {
-    this.page = page;
+    super(page);
     this.myAccountH1 = this.page.locator('h1');
-  }
-
-  async validateMyAccountTitle(title) {
-    await expect(this.page).toHaveTitle(title);
   }
   
   async validateMyAccountText(text){
