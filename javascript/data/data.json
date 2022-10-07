@@ -1,0 +1,146 @@
+{
+  "user": {
+    "firstname": "Diego",
+    "lastname": "Vargas",
+    "address": "Fake Street",
+    "city": "Fake City",
+    "postcode": "00000",
+    "mobilephone": "1234567890"
+  },
+  "errors": {
+    "registerEmailErrorMessage": "An account using this email address has already been registered. Please enter a valid password or request a new one. ",
+    "authFailedErrorMessage": "Authentication failed."
+  },
+  "titles": {
+    "homepage": "My Store",
+    "loginpage": "Login - My Store",
+    "myaccountpage": "My account - My Store",
+    "women": "Women - My Store",
+    "dresses": "Dresses - My Store",
+    "tshirts": "T-shirts - My Store",
+    "orderPage": "Order - My Store"
+  },
+  "urls": {
+    "home": "http://automationpractice.com/index.php",
+    "authentication": "http://automationpractice.com/index.php?controller=authentication&back=my-account",
+    "sections": {
+      "women": "http://automationpractice.com/index.php?id_category=3&controller=category",
+      "dresses": "http://automationpractice.com/index.php?id_category=8&controller=category",
+      "tshirts": "http://automationpractice.com/index.php?id_category=5&controller=category"
+    }
+  },
+  "texts": {
+    "myaccountpageH1": "My account",
+    "noSearchResultsFound": "No results were found for your search",
+    "oneResultFound": " result has been found.",
+    "manyResultsFound": " results have been found.",
+    "productAdded": "Product successfully added to your shopping cart ",
+    "bankwirePayment": "Bank-wire payment.",
+    "orderConfirmation": "Order confirmation"
+  },
+  "searches": {
+    "withNoResults": [
+      {
+        "keywords": "Macbook pro",
+        "results": "0"
+      },
+      {
+        "keywords": "Garden hose",
+        "results": "0"
+      }
+    ],
+    "withOneResult": [
+      {
+        "keywords": "Faded Short Sleeve T-shirts",
+        "results": "1"
+      },
+      {
+        "keywords": "Blouse",
+        "results": "1"
+      }
+    ],
+    "withManyResults": [
+      {
+        "keywords": "Yellow dress",
+        "results": "3"
+      },
+      {
+        "keywords": "Summer dress",
+        "results": "4"
+      }
+    ]
+  },
+  "products": {
+    "women": [
+      {
+        "name": "Faded Short Sleeve T-shirts",
+        "price": "$16.51",
+        "quantity": "1"
+      },
+      {
+        "name": "Blouse",
+        "price": "$27.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$26.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$50.99",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$28.98",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$30.50",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Chiffon Dress",
+        "price": "$16.40",
+        "quantity": "1"
+      }
+    ],
+    "dresses": [
+      {
+        "name": "Printed Dress",
+        "price": "$26.00",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Dress",
+        "price": "$50.99",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$28.98",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Summer Dress",
+        "price": "$30.50",
+        "quantity": "1"
+      },
+      {
+        "name": "Printed Chiffon Dress",
+        "price": "$16.40",
+        "quantity": "1"
+      }
+    ],
+    "tshirts": [
+      {
+        "name": "Faded Short Sleeve T-shirts",
+        "price": "$16.51",
+        "quantity": "1"
+      }
+    ]
+  }
+}
